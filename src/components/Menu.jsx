@@ -16,13 +16,13 @@ function Menu(props) {
     <>
       <div className="my-4">
         <h1>Welcome To Taco Truck Locator!</h1>
-        <h2>To find a taco truck near you please enter an address</h2>
+        <h2>To find a taco truck near you please enter a zipcode</h2>
       </div>
       <form action="">
         <div className="mb-3 row justify-content-center">
           <div className="col-auto">
             <label className="form-label" htmlFor="searchBar">
-              Enter Address:
+              Enter Zipcode:
             </label>
           </div>
           <div className="col-md-6">
