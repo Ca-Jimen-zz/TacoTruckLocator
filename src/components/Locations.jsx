@@ -3,6 +3,7 @@ import * as locationServices from "../services/locationServices";
 import SingleLocation from "./SingleLocation";
 import testData from "../testData";
 import Map from "./Map";
+import MoreInfo from "./MoreInfo";
 
 class Locations extends React.Component {
   state = {
@@ -10,6 +11,8 @@ class Locations extends React.Component {
     mappedLoc: [],
     latitude: "",
     longitude: "",
+    moreInfoTrigger: 0,
+    currentAddress: {},
   };
   componentDidMount() {
     console.log(this.props.location.state);
@@ -45,12 +48,22 @@ class Locations extends React.Component {
       };
     }, this.stateChanged);
   };
+  onMoreInfoClick = (address) => {
+    this.setState((prevState) => {
+      return {
+        ...prevState,
+        moreInfoTrigger: this.state.moreInfoTrigger + 1,
+        currentAddress: address,
+      };
+    }, this.stateChanged);
+  };
 
   mapCards = (address) => {
     return (
       <React.Fragment key={address.id}>
         <SingleLocation
           onDirectionsClick={this.onDirectionsClick}
+          onMoreInfoClick={this.onMoreInfoClick}
           address={address}
         />
       </React.Fragment>
@@ -83,6 +96,10 @@ class Locations extends React.Component {
           <div>{this.state.mappedLoc}</div>
           <div>
             <Map lat={this.state.latitude} lon={this.state.longitude} />
+            <MoreInfo
+              moreInfo={this.state.moreInfoTrigger}
+              address={this.state.currentAddress}
+            />
           </div>
         </div>
       </>

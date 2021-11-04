@@ -5,6 +5,10 @@ function SingleLocation(props) {
     props.onDirectionsClick(props.address);
   };
 
+  const onMoreInfoClick = () => {
+    props.onMoreInfoClick(props.address);
+  };
+
   return (
     <div className="card" style={{ width: "18rem" }}>
       <div className="card-body">
@@ -19,7 +23,9 @@ function SingleLocation(props) {
           <button className="btn btn-secondary" onClick={onDirectionsClick}>
             DIRECTIONS
           </button>
-          <button className="btn btn-secondary">MORE INFO</button>
+          <button className="btn btn-secondary" onClick={onMoreInfoClick}>
+            MORE INFO
+          </button>
         </div>
       </div>
     </div>
